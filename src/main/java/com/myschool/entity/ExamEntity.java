@@ -13,7 +13,7 @@ public class ExamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer examId;
 
-    private String examName; // Grade 10 - 1st Term
+    private String examName;
 
     @Enumerated(EnumType.STRING)
     private ExamType examType;

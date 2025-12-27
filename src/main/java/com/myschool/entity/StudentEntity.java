@@ -16,7 +16,7 @@ public class StudentEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user; // Student login info
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "school_id")

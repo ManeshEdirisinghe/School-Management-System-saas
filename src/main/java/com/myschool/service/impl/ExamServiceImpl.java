@@ -26,7 +26,6 @@ public class ExamServiceImpl implements ExamService {
     @Override
     public void createExam(ExamDto dto) {
         ExamEntity entity = mapper.convertValue(dto, ExamEntity.class);
-        // Link Academic Year manually if needed
         if(dto.getAcademicYearId() != null){
             AcademicYearEntity year = yearRepository.findById(dto.getAcademicYearId()).orElse(null);
             entity.setAcademicYear(year);

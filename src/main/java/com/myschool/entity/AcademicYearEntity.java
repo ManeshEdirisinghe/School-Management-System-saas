@@ -16,7 +16,7 @@ public class AcademicYearEntity {
     @JoinColumn(name = "school_id")
     private SchoolEntity school;
 
-    private String yearName; // 2025-2026
+    private String yearName;
     private LocalDate startDate;
     private LocalDate endDate;
     private Boolean isActive;

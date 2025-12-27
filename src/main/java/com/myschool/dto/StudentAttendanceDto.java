@@ -9,6 +9,6 @@ public class StudentAttendanceDto {
     private Integer studentId;
     private Integer classId;
     private LocalDate date;
-    private String status; // PRESENT, ABSENT etc.
+    private String status;
     private String remarks;
 }

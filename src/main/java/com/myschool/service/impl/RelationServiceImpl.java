@@ -22,25 +22,22 @@ public class RelationServiceImpl implements RelationService {
 
     @Override
     public void addStudentParentRelation(StudentParentDto dto) {
-        // 1. Key එක හදාගන්නවා
         StudentParentKey key = new StudentParentKey();
         key.setStudentId(dto.getStudentId());
         key.setParentId(dto.getParentId());
 
-        // 2. Entity එක හදලා Data පුරවනවා
         StudentParentEntity entity = new StudentParentEntity();
         entity.setId(key);
         entity.setRelationship(dto.getRelationship());
         entity.setIsEmergencyContact(dto.getIsEmergencyContact());
 
-        // 3. Student සහ Parent Objects හොයලා set කරනවා (JPA වලට ඕන නිසා)
         StudentEntity student = studentRepository.findById(dto.getStudentId()).orElse(null);
         ParentEntity parent = parentRepository.findById(dto.getParentId()).orElse(null);
 
         if (student != null && parent != null) {
             entity.setStudent(student);
             entity.setParent(parent);
-            // 4. Save කරනවා
+
             relationRepository.save(entity);
         }
     }

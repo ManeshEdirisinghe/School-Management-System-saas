@@ -13,7 +13,7 @@ public class ParentEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user; // Login info
+    private UserEntity user;
 
     private String name;
     private String occupation;

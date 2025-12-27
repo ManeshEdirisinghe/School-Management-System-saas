@@ -16,7 +16,7 @@ public class TeacherEntity {
     private Integer id;
     private Integer schoolId;
     private String name;
-    private String gender; // Enum වෙනුවට String භාවිතා කළා
+    private String gender;
     private String phone;
     private String address;
     private String nic;

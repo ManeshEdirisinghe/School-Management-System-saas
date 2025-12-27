@@ -5,6 +5,6 @@ import lombok.Data;
 public class StudentParentDto {
     private Integer studentId;
     private Integer parentId;
-    private String relationship; // Father, Mother
+    private String relationship;
     private Boolean isEmergencyContact;
 }

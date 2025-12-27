@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class ExamDto {
     private Integer examId;
     private String examName;
-    private String examType; // Enum as String
+    private String examType;
     private LocalDate date;
     private Integer academicYearId;
 }

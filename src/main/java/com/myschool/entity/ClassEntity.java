@@ -19,8 +19,8 @@ public class ClassEntity {
     @JoinColumn(name = "academic_year_id")
     private AcademicYearEntity academicYear;
 
-    private String className; // Grade 10
-    private String section;   // A, B
+    private String className;
+    private String section;
 
     @ManyToOne
     @JoinColumn(name = "class_teacher_id")

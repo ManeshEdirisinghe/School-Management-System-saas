@@ -24,5 +24,5 @@ public class MarkEntity {
     private SubjectEntity subject;
 
     private Double marksObtained;
-    private String grade; // A, B, C, S, W
+    private String grade;
 }

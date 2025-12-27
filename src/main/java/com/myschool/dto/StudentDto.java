@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class StudentDto {
     private Integer studentId;
     private Integer schoolId;
-    private Integer classId; // Student ඉන්න පන්තියේ ID එක
+    private Integer classId;
     private String admissionNumber;
     private String firstName;
     private String lastName;

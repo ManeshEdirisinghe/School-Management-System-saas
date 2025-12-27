@@ -22,7 +22,7 @@ public class StudentParentEntity {
     @JoinColumn(name = "parent_id")
     private ParentEntity parent;
 
-    private String relationship; // Father, Mother, Guardian
+    private String relationship;
 
     @Column(name = "is_emergency_contact")
     private Boolean isEmergencyContact;
