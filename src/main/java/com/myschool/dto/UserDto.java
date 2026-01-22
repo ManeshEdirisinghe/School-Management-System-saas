@@ -6,7 +6,7 @@ public class UserDto {
     private Integer schoolId;
     private Integer roleId;
     private String username;
-    private String passwordHash; 
+    private String passwordHash;
     private String email;
     private String status;
 }
