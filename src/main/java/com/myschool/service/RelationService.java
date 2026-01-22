@@ -1,4 +1,6 @@
 package com.myschool.service;
+import com.myschool.dto.StudentParentDto;
 
-public class RelationService {
+public interface RelationService {
+    void addStudentParentRelation(StudentParentDto dto);
 }
