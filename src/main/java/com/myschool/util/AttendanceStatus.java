@@ -1,4 +1,5 @@
 package com.myschool.util;
 
-public class AttendanceStatus {
+public enum AttendanceStatus {
+    PRESENT, ABSENT, LATE, EXCUSED
 }
