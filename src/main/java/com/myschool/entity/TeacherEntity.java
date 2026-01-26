@@ -4,21 +4,28 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "teacher")
+@Table(name = "teachers")
 public class TeacherEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer schoolId;
-    private String name;
-    private String gender;
-    private String phone;
-    private String address;
-    private String nic;
-    private String department;
+    private Integer teacherId;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private SchoolEntity school;
+
+    private String qualification;
+    private String specialization;
+    private LocalDate joiningDate;
 }
