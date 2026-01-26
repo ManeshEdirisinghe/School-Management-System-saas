@@ -1,4 +1,4 @@
 package com.myschool.service;
 
-public class Timetableservice {
+public class TimetableService {
 }
