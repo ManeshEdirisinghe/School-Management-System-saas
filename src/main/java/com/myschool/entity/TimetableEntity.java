@@ -1,4 +1,27 @@
 package com.myschool.entity;
 
-public class TimeTableEntity {
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "timetables")
+public class TimetableEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer timetableId;
+
+    @ManyToOne
+    @JoinColumn(name = "class_id")
+    private ClassEntity currentClass;
+
+    private String dayOfWeek; // Monday, Tuesday...
+
+    @ManyToOne
+    @JoinColumn(name = "timeslot_id")
+    private TimeSlotEntity timeSlot;
+
+    @ManyToOne
+    @JoinColumn(name = "class_subject_id")
+    private ClassSubjectEntity classSubject; // මේ වෙලාවට උගන්වන විෂය
 }

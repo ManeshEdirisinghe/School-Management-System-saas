@@ -1,4 +1,9 @@
 package com.myschool.repository;
 
-public class ClassSubjectRepository {
+import com.myschool.entity.ClassSubjectEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ClassSubjectRepository extends JpaRepository<ClassSubjectEntity, Integer> {
+    List<ClassSubjectEntity> findByCurrentClassClassId(Integer classId);
 }
