@@ -1,4 +1,5 @@
 package com.myschool.util;
 
-public class PaymentStatus {
+public enum PaymentStatus {
+    PAID, PARTIALLY_PAID, UNPAID
 }
