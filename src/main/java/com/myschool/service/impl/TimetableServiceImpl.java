@@ -19,7 +19,6 @@ public class TimetableServiceImpl implements TimetableService {
     private final TimeSlotRepository timeSlotRepository;
     private final TimetableRepository timetableRepository;
 
-    // Dependencies needed for linking
     private final ClassRepository classRepository;
     private final SubjectRepository subjectRepository;
     private final TeacherRepository teacherRepository;

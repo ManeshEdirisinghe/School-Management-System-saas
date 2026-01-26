@@ -28,7 +28,6 @@ public class AttendanceController {
 
     @GetMapping("/get-by-class-date/{classId}/{date}")
     public List<StudentAttendanceDto> getClassAttendance(@PathVariable Integer classId, @PathVariable String date) {
-        // Date String එක LocalDate වලට හරවන්න වෙනවා (YYYY-MM-DD format)
         LocalDate localDate = LocalDate.parse(date);
         return attendanceService.getClassAttendanceByDate(classId, localDate);
     }

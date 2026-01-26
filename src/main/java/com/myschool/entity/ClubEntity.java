@@ -11,9 +11,9 @@ public class ClubEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer clubId;
 
-    private String name; // Science Club, Media Unit
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "teacher_in_charge_id")
-    private TeacherEntity teacherInCharge; // FK to Teacher (Staff)
+    private TeacherEntity teacherInCharge;
 }

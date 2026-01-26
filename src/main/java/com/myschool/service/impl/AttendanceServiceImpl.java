@@ -34,10 +34,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         }
 
         entity.setDate(dto.getDate());
-        entity.setStatus(AttendanceStatus.valueOf(dto.getStatus())); // String -> Enum
+        entity.setStatus(AttendanceStatus.valueOf(dto.getStatus()));
         entity.setRemarks(dto.getRemarks());
 
-        // Relationships set කරනවා
         entity.setStudent(studentRepository.findById(dto.getStudentId()).orElse(null));
         entity.setCurrentClass(classRepository.findById(dto.getClassId()).orElse(null));
 

@@ -15,7 +15,7 @@ public class TimetableEntity {
     @JoinColumn(name = "class_id")
     private ClassEntity currentClass;
 
-    private String dayOfWeek; // Monday, Tuesday...
+    private String dayOfWeek;
 
     @ManyToOne
     @JoinColumn(name = "timeslot_id")
@@ -23,5 +23,5 @@ public class TimetableEntity {
 
     @ManyToOne
     @JoinColumn(name = "class_subject_id")
-    private ClassSubjectEntity classSubject; // මේ වෙලාවට උගන්වන විෂය
+    private ClassSubjectEntity classSubject;
 }

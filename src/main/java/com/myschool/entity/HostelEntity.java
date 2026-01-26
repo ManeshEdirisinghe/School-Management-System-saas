@@ -15,6 +15,6 @@ public class HostelEntity {
     @JoinColumn(name = "school_id")
     private SchoolEntity school;
 
-    private String type; // Boys, Girls, Mixed
+    private String type;
     private Integer capacity;
 }

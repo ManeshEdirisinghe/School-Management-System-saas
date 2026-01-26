@@ -20,7 +20,7 @@ public class ExamServiceImpl implements ExamService {
     private final MarkRepository markRepository;
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
-    private final AcademicYearRepository yearRepository; // For linking academic year
+    private final AcademicYearRepository yearRepository;
     private final ObjectMapper mapper;
 
     @Override
@@ -47,7 +47,6 @@ public class ExamServiceImpl implements ExamService {
         entity.setMarksObtained(dto.getMarksObtained());
         entity.setGrade(dto.getGrade());
 
-        // Set Relationships
         entity.setExam(examRepository.findById(dto.getExamId()).orElse(null));
         entity.setStudent(studentRepository.findById(dto.getStudentId()).orElse(null));
         entity.setSubject(subjectRepository.findById(dto.getSubjectId()).orElse(null));

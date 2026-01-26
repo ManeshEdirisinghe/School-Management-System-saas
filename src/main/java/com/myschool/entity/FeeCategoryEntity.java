@@ -15,5 +15,5 @@ public class FeeCategoryEntity {
     @JoinColumn(name = "school_id")
     private SchoolEntity school;
 
-    private String name; // e.g., "Term Fee", "Facility Fee"
+    private String name;
 }

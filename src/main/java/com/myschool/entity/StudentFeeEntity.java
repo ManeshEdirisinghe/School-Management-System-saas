@@ -22,7 +22,7 @@ public class StudentFeeEntity {
     private FeeStructureEntity feeStructure;
 
     private LocalDate dueDate;
-    private Double amountPaid; // දැනට ගෙවා ඇති මුදල
+    private Double amountPaid;
 
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
