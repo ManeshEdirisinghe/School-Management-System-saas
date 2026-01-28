@@ -1,6 +1,7 @@
 package com.myschool.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.myschool.dto.FacilityAllocationDto;
 import com.myschool.dto.FacilityDto;
 import com.myschool.entity.*;
 import com.myschool.repository.*;
@@ -23,7 +24,13 @@ public class FacilityServiceImpl implements FacilityService {
     private final SchoolRepository schoolRepository;
     private final TeacherRepository teacherRepository;
 
+    private final StudentHostelRepository studentHostelRepo;
+    private final StudentTransportRepository studentTransportRepo;
+    private final StudentClubRepository studentClubRepo;
+    private final StudentRepository studentRepo;
+
     private final ObjectMapper mapper;
+
 
     @Override
     public void addHostel(FacilityDto dto) {
@@ -61,6 +68,7 @@ public class FacilityServiceImpl implements FacilityService {
         clubRepository.save(entity);
     }
 
+
     @Override
     public List<FacilityDto> getAllHostels() {
         List<HostelEntity> list = hostelRepository.findAll();
@@ -75,7 +83,79 @@ public class FacilityServiceImpl implements FacilityService {
         return dtos;
     }
 
-    @Override public List<FacilityDto> getAllTransports() { return new ArrayList<>(); } // Placeholder
-    @Override public List<FacilityDto> getAllCanteens() { return new ArrayList<>(); } // Placeholder
-    @Override public List<FacilityDto> getAllClubs() { return new ArrayList<>(); } // Placeholder
+    @Override
+    public List<FacilityDto> getAllTransports() {
+        List<TransportEntity> list = transportRepository.findAll();
+        List<FacilityDto> dtos = new ArrayList<>();
+        list.forEach(e -> {
+            FacilityDto dto = new FacilityDto();
+            dto.setId(e.getTransportId());
+            dto.setBusNo(e.getBusNo());
+            dto.setRoute(e.getRoute());
+            dto.setDriverName(e.getDriverName());
+            dtos.add(dto);
+        });
+        return dtos;
+    }
+
+    @Override
+    public List<FacilityDto> getAllCanteens() {
+        List<CanteenEntity> list = canteenRepository.findAll();
+        List<FacilityDto> dtos = new ArrayList<>();
+        list.forEach(e -> {
+            FacilityDto dto = new FacilityDto();
+            dto.setId(e.getCanteenId());
+            dto.setCanteenType(e.getType());
+            dto.setOpeningHours(e.getOpeningHours());
+            dtos.add(dto);
+        });
+        return dtos;
+    }
+
+    @Override
+    public List<FacilityDto> getAllClubs() {
+        List<ClubEntity> list = clubRepository.findAll();
+        List<FacilityDto> dtos = new ArrayList<>();
+        list.forEach(e -> {
+            FacilityDto dto = new FacilityDto();
+            dto.setId(e.getClubId());
+            dto.setClubName(e.getName());
+            if(e.getTeacherInCharge() != null) {
+                dto.setTeacherInChargeId(e.getTeacherInCharge().getTeacherId());
+            }
+            dtos.add(dto);
+        });
+        return dtos;
+    }
+
+
+    @Override
+    public void assignStudentToHostel(FacilityAllocationDto dto) {
+        StudentHostelEntity entity = new StudentHostelEntity();
+        entity.setStudent(studentRepo.findById(dto.getStudentId()).orElse(null));
+        entity.setHostel(hostelRepository.findById(dto.getHostelId()).orElse(null));
+        entity.setAssignedDate(dto.getAssignedDate());
+        entity.setIsActive(true);
+        studentHostelRepo.save(entity);
+    }
+
+    @Override
+    public void assignStudentToTransport(FacilityAllocationDto dto) {
+        StudentTransportEntity entity = new StudentTransportEntity();
+        entity.setStudent(studentRepo.findById(dto.getStudentId()).orElse(null));
+        entity.setTransport(transportRepository.findById(dto.getTransportId()).orElse(null));
+        entity.setAssignedDate(dto.getAssignedDate());
+        entity.setIsActive(true);
+        studentTransportRepo.save(entity);
+    }
+
+    @Override
+    public void assignStudentToClub(FacilityAllocationDto dto) {
+        StudentClubEntity entity = new StudentClubEntity();
+        entity.setStudent(studentRepo.findById(dto.getStudentId()).orElse(null));
+        entity.setClub(clubRepository.findById(dto.getClubId()).orElse(null));
+        entity.setRole(dto.getRole());
+        entity.setJoinedDate(dto.getAssignedDate());
+        studentClubRepo.save(entity);
+    }
 }

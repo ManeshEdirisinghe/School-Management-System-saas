@@ -1,7 +1,5 @@
 package com.myschool.entity;
 
-import com.myschool.util.Gender;
-import com.myschool.util.StudentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
@@ -22,18 +20,15 @@ public class StudentEntity {
     @JoinColumn(name = "school_id")
     private SchoolEntity school;
 
-    private String admissionNumber;
-    private LocalDate admissionDate;
-
     @ManyToOne
     @JoinColumn(name = "current_class_id")
     private ClassEntity currentClass;
 
-    private LocalDate dateOfBirth;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @Enumerated(EnumType.STRING)
-    private StudentStatus status;
+    private String admissionNumber;
+    private String firstName;
+    private String lastName;
+    private LocalDate dob;
+    private String gender;
+    private String address;
+    private String status;
 }
