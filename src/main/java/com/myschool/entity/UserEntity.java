@@ -14,7 +14,7 @@ public class UserEntity {
     @Column(unique = true)
     private String username;
 
-    private String password; 
+    private String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
