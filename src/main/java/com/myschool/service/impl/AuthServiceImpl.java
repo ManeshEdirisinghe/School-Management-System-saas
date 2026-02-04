@@ -20,12 +20,21 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public LoginResponseDto login(LoginRequestDto dto) {
+        // --- LOG 1: එන Request එක බලමු ---
+        System.out.println("Login Request ආවා: Username = " + dto.getUsername());
+        System.out.println("Login Request ආවා: Password = " + dto.getPassword());
+
         Optional<UserEntity> userOpt = userRepository.findByUsername(dto.getUsername());
 
         if (userOpt.isPresent()) {
             UserEntity user = userOpt.get();
+            // --- LOG 2: DB එකේ තියෙන දත්ත බලමු ---
+            System.out.println("User හමුවුණා: " + user.getUsername());
+            System.out.println("DB Password: " + user.getPassword());
 
-            if (user.getPassword().equals(dto.getPassword())) {
+            if (user.getPassword() != null && user.getPassword().equals(dto.getPassword())) {
+                System.out.println("✅ Password හරියටම ගැලපුණා!");
+
                 LoginResponseDto response = new LoginResponseDto();
                 response.setUserId(user.getUserId());
                 response.setUsername(user.getUsername());
@@ -46,9 +55,12 @@ public class AuthServiceImpl implements AuthService {
                         response.setName(student.getFirstName());
                     }
                 }
-
                 return response;
+            } else {
+                System.out.println("❌ Password වැරදියි! (DB එකේ සහ Input එක සමාන නෑ)");
             }
+        } else {
+            System.out.println("❌ User කෙනෙක් හමුවුණේ නෑ: " + dto.getUsername());
         }
         return null;
     }
